@@ -38,7 +38,7 @@ Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 // every consecutive frame by (1.0 - this amount):
 #define PLAYER_DECELERATION			0.9f
 #define BULLET_LIFESPAN				200
-#define MUZZLE_VEL				20
+#define MUZZLE_VEL				40
 
 // A mouse structure holds mousepointer coords & a pointer texture:
 typedef struct _mouse_ {
@@ -502,9 +502,4 @@ void process_bullet(player *player, bullet *bullet, float angle, mouse *mouse)
 		bullet->x += (int)bullet->speed_x;
 		bullet->y += (int)bullet->speed_y;	
 	}
-//	else
-//	{
-//		player->state = IDLE;	
-	//}
-		//printf("bullet bevindt zich op \n x: %d \n y: %d \n De snelheid is: \n x: %.2f \n y: %.2f \n", bullet->x, bullet->y, bullet->speed_x, bullet->speed_y);
 }
