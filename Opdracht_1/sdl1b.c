@@ -163,6 +163,7 @@ void process_input(koe *koetje)
 				exit(0);
 				break;
 			case SDL_KEYDOWN:
+			{
 				rgb_counter ++;
 				switch (event.key.keysym.scancode)
 				{
@@ -185,6 +186,7 @@ void process_input(koe *koetje)
 					default:
 						break;
 				}
+			}
 				break;
 
 			default:

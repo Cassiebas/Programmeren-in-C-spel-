@@ -1,1 +1,6 @@
 *.o
+sdl_seminar/
+Opdracht_2+3/Opdracht_3/sdl2a.c
+Opdracht_2+3/Opdracht_3/*.o
+Opdracht_2+3/Opdracht_3/sdl2c.c
+Opdracht_2+3/Opdracht_3/gfx/
