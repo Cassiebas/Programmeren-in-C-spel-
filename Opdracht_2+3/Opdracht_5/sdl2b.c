@@ -36,12 +36,13 @@ Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #include "Mod/Update/Update.h"
 //#include "modules/renderer/renderer.h"
 
-
+#define FPS							60
 #define SCREEN_WIDTH				1080
 #define SCREEN_HEIGHT				720
 
 
 void proper_shutdown(void);
+void setFps(Uint32 starting_tick);
 
 SDL_Window *window; //= NULL;
 SDL_Renderer *renderer; //= NULL;
@@ -79,6 +80,7 @@ int main(int argc, char *argv[])
 	int frame = 0, zombie_frame;
 	unsigned int window_flags = 0;
 	unsigned int renderer_flags = SDL_RENDERER_ACCELERATED;
+	Uint32 starting_tick;
 
 	//init_renderer(renderer, window, renderer_flags, window_flags);
 
@@ -112,6 +114,8 @@ int main(int argc, char *argv[])
 
 	while (1)
 	{
+		starting_tick = SDL_GetTicks();
+
 		SDL_SetRenderDrawColor(renderer, 120, 144, 156, 255);
 		SDL_RenderClear(renderer);
 
@@ -228,9 +232,9 @@ int main(int argc, char *argv[])
 		{
 			frame = 0;
 		}
-
+		setFps(starting_tick);
 	}
-
+	
 	return 0;
 }
 void proper_shutdown(void)
@@ -238,4 +242,19 @@ void proper_shutdown(void)
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+void setFps(Uint32 starting_tick)
+{
+    if( (1000 / FPS) > (SDL_GetTicks() - starting_tick))
+    {
+        SDL_Delay(1000/FPS - (SDL_GetTicks() - starting_tick));
+        printf ("FPS: %d\n", 1000/(SDL_GetTicks() - starting_tick));
+
+    }
+	else
+	{
+		printf ("FPS: %d\n", 1000/(SDL_GetTicks() - starting_tick));
+	}
+	
 }
