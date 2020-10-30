@@ -10,13 +10,13 @@ CFLAGS := `sdl2-config --libs --cflags` -Wpedantic -Wconversion -Wall -Wextra -g
 HDRS :=
 
 # add source files here
-SRCS := Game_Test.c
+SRCS := Game_Test.c Mod/Blit/Blit.c Mod/Input/Input.c Mod/Renderer/Renderer.c Mod/Sound/Sound.c Mod/Textures/Textures.c Mod/Update/Update.c 
 
 # generate names of object files
 OBJS := $(SRCS:.c=.o)
 
 # name of executable
-EXEC := game
+EXEC := game 
 
 # default recipe
 all: $(EXEC)
